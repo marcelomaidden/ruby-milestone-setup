@@ -1,4 +1,6 @@
 class Game
+  attr_accessor :on
+
   def initialize
     @board = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
   end
@@ -24,8 +26,9 @@ class Game
     true
   end
 
-  def game_on?
-    false unless board[0].any?(nil) || board[1].any?(nil) || board[2].any?(nil)
+  def board_full?
+    true unless @board[0].any?(nil) || @board[1].any?(nil) || @board[2].any?(nil)
+    false
   end
 
   def winner(player)
