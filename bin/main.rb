@@ -64,6 +64,7 @@ loop do
 
       game.display_board
 
+      "Board full: #{game.board_full?}"
       break unless game.on
     end
 
@@ -76,13 +77,17 @@ loop do
       puts 'There is no winner'
       puts "\n==========================================="
     end
-
-    wanna_play = ''
-    while wanna_play.upcase != 'YES' || wanna_play.upcase != 'NO'
-      puts 'Do you wanna play again? [yes] [no]'
-      wanna_play = gets.chomp
-      system('clear')
-    end
   end
+
+  wanna_play = ''
+  
+  loop do
+    puts 'Do you wanna play again? [yes] [no]'
+    wanna_play = gets.chomp
+    break if wanna_play.upcase == 'YES' || wanna_play.upcase == 'NO'
+  end
+  
   break if wanna_play.upcase == 'NO'
+
+  system('clear')
 end
