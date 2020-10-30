@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
+require './game.rb'
 
 loop do
+  game = Game.new
+
   puts "#################################"
   puts "  Tic Tac Toe Game"
   puts "  Let's start"
@@ -19,6 +22,8 @@ loop do
 
   while tries < 9
     system('clear')
+
+    game.display_board
 
     loop do
       puts '============================================'
