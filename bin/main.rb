@@ -2,8 +2,8 @@
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Metrics/BlockNesting
 
-require './game'
-require './player'
+require_relative '../lib/game'
+require_relative '../lib/player'
 
 loop do
   puts '#################################'
@@ -66,6 +66,8 @@ loop do
           player = player == player_x ? player_o : player_x
         end
       end
+
+      puts "Game board full?: #{game.board_full?}"
 
       game.display_board
 
