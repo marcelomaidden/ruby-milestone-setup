@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# rubocop:disable Metrics/BlockLength
+
 require './game'
 require './player'
 
@@ -91,3 +93,5 @@ loop do
 
   system('clear')
 end
+
+# rubocop:disable Metrics/BlockLength
