@@ -45,7 +45,14 @@ loop do
         puts "\n==========================================="
         puts 'Rows and column should be between 1 and 3'
         puts '==========================================='
-        puts "Showing game board"
+      elsif !game.board_nil?(row, column)
+        system('clear')
+        game.display_board
+        puts "\n==========================================="
+        puts 'These row and column already exists'
+        puts '==========================================='
+      else 
+        game.play(row - 1, column - 1, player[1])
       end
 
       puts "Let's see if you are the winner"
