@@ -1,3 +1,5 @@
+# rubocop:disable Style/ClassVars
+
 class Player
   attr_reader :name, :alias
 
@@ -15,3 +17,5 @@ class Player
              end
   end
 end
+
+# rubocop:enable Style/ClassVars

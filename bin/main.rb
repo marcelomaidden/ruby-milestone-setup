@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/BlockLength
+# rubocop:disable Metrics/BlockNesting
 
 require './game'
 require './player'
@@ -32,9 +33,9 @@ loop do
       puts "Player #{player.alias}[#{player.name}]"
       puts '============================================'
       puts 'Enter row number: '
-      game.set_row(gets.chomp)
+      game.row = (gets.chomp)
       puts 'Enter column number: '
-      game.set_column(gets.chomp)
+      game.column = (gets.chomp)
 
       system('clear')
 
@@ -42,7 +43,7 @@ loop do
       puts "Let's verify if your game is valid"
       puts '============================================'
 
-      if !game.is_valid?
+      if !game.valid?
         puts "\n==========================================="
         puts 'Rows and column should be between 1 and 3'
         puts '==========================================='
@@ -66,32 +67,32 @@ loop do
 
       game.display_board
 
-      "Board full: #{game.board_full?}"
       break unless game.on
     end
 
+    puts "\n==========================================="
+
     if game.winner(player).is_a?(Player)
-      puts "\n==========================================="
       puts "Winner is #{player.alias}[#{player.name}]"
-      puts "\n==========================================="
     else
-      puts "\n==========================================="
       puts 'There is no winner'
-      puts "\n==========================================="
     end
+
+    puts "\n==========================================="
   end
 
   wanna_play = ''
-  
+
   loop do
     puts 'Do you wanna play again? [yes] [no]'
     wanna_play = gets.chomp
     break if wanna_play.upcase == 'YES' || wanna_play.upcase == 'NO'
   end
-  
+
   break if wanna_play.upcase == 'NO'
 
   system('clear')
 end
 
-# rubocop:disable Metrics/BlockLength
+# rubocop:enable Metrics/BlockLength
+# rubocop:enable Metrics/BlockNesting

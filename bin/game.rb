@@ -1,3 +1,7 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Metrics/AbcSize
+
 class Game
   attr_accessor :on
   attr_reader :row, :column
@@ -10,15 +14,15 @@ class Game
     puts "#{@board[0]} \n#{@board[1]}\n#{@board[2]}"
   end
 
-  def set_row(row)
+  def row=(row)
     @row = row.to_i - 1
   end
 
-  def set_column(column)
+  def column=(column)
     @column = column.to_i - 1
   end
 
-  def is_valid?
+  def valid?
     return true if @row >= 0 && @row <= 2 && @column >= 0 && @column <= 2
   end
 
@@ -59,3 +63,7 @@ class Game
     return player if @board[0][2] == player.alias && @board[1][2] == player.alias && @board[2][2] == player.alias
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/AbcSize
