@@ -33,9 +33,11 @@ loop do
       puts "Player #{player.alias}[#{player.name}]"
       puts '============================================'
       puts 'Enter row number: '
-      game.row = (gets.chomp)
+      row = gets.chomp
+      game.row = (row)
       puts 'Enter column number: '
-      game.column = (gets.chomp)
+      column = gets.chomp
+      game.column = (column)
 
       system('clear')
 
