@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-
+# rubocop:disable Metrics/BlockLength
 loop do
-  puts "#################################"
-  puts "  Tic Tac Toe Game"
+  puts '#################################'
+  puts '  Tic Tac Toe Game'
   puts "  Let's start"
-  puts "#################################"
+  puts '#################################'
   puts "Enter the player X's name"
   name = gets.chomp
   player_x = [name, 'X']
@@ -31,18 +31,23 @@ loop do
       row = row.to_i
       column = column.to_i
 
+      puts '============================================'
+      puts 'Your game is'
+      puts "#{row} - #{column}"
+      puts '============================================'
+
       puts "Let's verify if your game is valid"
-      #create function to validate game
+      # create function to validate game
       puts '==========================================='
       puts 'Rows and column should be between 1 and 3'
       puts '==========================================='
-      puts "Showing game board"
-      #create function to display the game board
+      puts 'Showing game board'
+      # create function to display the game board
 
       puts "Let's see if you are the winner"
-      #create function to verify winner
+      # create function to verify winner
 
-      #change player turn
+      # change player turn
       player = player == player_x ? player_o : player_x
 
       tries += 1
@@ -52,15 +57,16 @@ loop do
 
     puts "Winner is #{player[1]}"
 
-    puts "Do you wanna play again? [yes] [no]"
+    puts 'Do you wanna play again? [yes] [no]'
     wanna_play = gets.chomp
 
     break if wanna_play.upcase == 'NO'
 
     system('clear')
 
-    puts "Creating another game"
-    #create function to start game
+    puts 'Creating another game'
+    # create function to start game
   end
 end
 
+# rubocop:enable Metrics/BlockLength
