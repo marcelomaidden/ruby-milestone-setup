@@ -23,4 +23,8 @@ class Game
 
     true
   end
+
+  def game_on?
+    false unless board[0].any?(nil) || board[1].any?(nil) || board[2].any?(nil)
+  end
 end
