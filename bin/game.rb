@@ -1,5 +1,6 @@
 class Game
   attr_accessor :on
+  attr_reader :row, :column
 
   def initialize
     @board = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
@@ -9,19 +10,27 @@ class Game
     puts "#{@board[0]} \n#{@board[1]}\n#{@board[2]}"
   end
 
-  def is_valid?(row, column)
-    return true if row >= 1 && row <= 3 && column >= 1 && column <= 3
+  def set_row(row)
+    @row = row.to_i - 1
   end
 
-  def play(row, column, player)
-    return false unless board_nil?(row, column)
+  def set_column(column)
+    @column = column.to_i - 1
+  end
 
-    @board[row][column] = player
+  def is_valid?
+    return true if @row >= 0 && @row <= 2 && @column >= 0 && @column <= 2
+  end
+
+  def play(player)
+    return false unless board_nil?
+
+    @board[@row][@column] = player
     true
   end
   
-  def board_nil?(row, column)
-    return false unless @board[row][column].nil?
+  def board_nil?
+    return false unless @board[@row][@column].nil?
 
     true
   end
@@ -33,8 +42,8 @@ class Game
 
   def winner(player)
     result = false
-    @board.map do |row|
-      result = player if row.all?(player.alias)
+    @board.map do |r|
+      result = player if r.all?(player.alias)
     end
 
     return player if result == player

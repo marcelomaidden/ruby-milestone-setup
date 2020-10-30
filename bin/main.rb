@@ -25,52 +25,46 @@ loop do
   while game.on
     system('clear')
 
-    game.display_board
-
     loop do
       puts "\n============================================"
       puts "Player #{player.alias}[#{player.name}]"
       puts '============================================'
       puts 'Enter row number: '
-      row = gets.chomp
+      game.set_row(gets.chomp)
       puts 'Enter column number: '
-      column = gets.chomp
-      row = row.to_i
-      column = column.to_i
+      game.set_column(gets.chomp)
+
+      system('clear')
 
       puts "\n============================================"
       puts "Let's verify if your game is valid"
       puts "============================================"
 
-      if !game.is_valid?(row, column)
-        system('clear')
+      if !game.is_valid?
         puts "\n==========================================="
         puts 'Rows and column should be between 1 and 3'
         puts '==========================================='
-      elsif !game.board_nil?(row, column)
-        system('clear')
+      elsif !game.board_nil?
+        puts "Board nil: #{game.board_nil?}"
         puts "\n==========================================="
         puts 'These row and column already exists'
         puts '==========================================='
       else 
-        game.play(row - 1, column - 1, player.alias)
+        game.play(player.alias)
+        puts "\n==========================================="
+        puts "Let's see if you are the winner"
+        puts "\n==========================================="
+        game.on = false if game.winner(player) == player || game.board_full?  
+
+        break if !game.on
+        #change player turn
+        if game.on
+          player = player == player_x ? player_o : player_x 
+        end
       end
 
       game.display_board
 
-      puts "\n==========================================="
-      puts "Let's see if you are the winner"
-      puts "\n==========================================="
-      game.on = false if game.winner(player) == player || game.board_full?
-
-      
-      puts "Board_full: #{game.board_full?}"
-
-      break if !game.on
-      #change player turn
-      if game.on
-        player = player == player_x ? player_o : player_x 
-      end
     end
 
     if game.winner(player).is_a player
