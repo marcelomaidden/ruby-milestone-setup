@@ -15,9 +15,13 @@ loop do
 
   player = player_x
 
-  tries = 0
+  game_on = true
 
-  while tries < 9
+  board = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+
+  winner = nil
+
+  while game_on
     system('clear')
 
     loop do
@@ -38,11 +42,17 @@ loop do
 
       puts "Let's verify if your game is valid"
       # create function to validate game
-      puts '==========================================='
-      puts 'Rows and column should be between 1 and 3'
-      puts '==========================================='
-      puts 'Showing game board'
-      # create function to display the game board
+      draw = row >= 1 && row <= 3 && column >= 1 && column <= 3
+      if draw == false
+        puts '==========================================='
+        puts 'Rows and column should be between 1 and 3'
+        puts '==========================================='
+      else
+        board[row][column] = player[1]
+      end
+      
+      #Showing game board
+      puts "#{board[0]} \n#{board[1]}\n#{board[2]}"
 
       puts "Let's see if you are the winner"
       # create function to verify winner
@@ -50,9 +60,8 @@ loop do
       # change player turn
       player = player == player_x ? player_o : player_x
 
-      tries += 1
-
-      break if tries == 9
+      game_on = false if !board[0].all?(nil) && !board[1].all?(nil) && !board[2].all?(nil)
+      game_one = false if !winner.nil?
     end
 
     puts "Winner is #{player[1]}"
