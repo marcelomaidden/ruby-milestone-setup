@@ -26,7 +26,7 @@ loop do
     game.display_board
 
     loop do
-      puts '============================================'
+      puts "\n============================================"
       puts "Player #{player[1]}[#{player[0]}]"
       puts '============================================'
       puts 'Enter row number: '
@@ -36,13 +36,17 @@ loop do
       row = row.to_i
       column = column.to_i
 
+      puts "\n============================================"
       puts "Let's verify if your game is valid"
-      #create function to validate game
-      puts '==========================================='
-      puts 'Rows and column should be between 1 and 3'
-      puts '==========================================='
-      puts "Showing game board"
-      #create function to display the game board
+      puts "============================================"
+      if !game.is_valid?(row, column)
+        system('clear')
+        game.display_board
+        puts "\n==========================================="
+        puts 'Rows and column should be between 1 and 3'
+        puts '==========================================='
+        puts "Showing game board"
+      end
 
       puts "Let's see if you are the winner"
       #create function to verify winner
