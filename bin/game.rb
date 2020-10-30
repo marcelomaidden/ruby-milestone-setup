@@ -27,4 +27,23 @@ class Game
   def game_on?
     false unless board[0].any?(nil) || board[1].any?(nil) || board[2].any?(nil)
   end
+
+  def winner(player)
+    result = false
+    @board.map do |row|
+      result = player if row.all?(player.alias)
+    end
+
+    return player if result == player
+
+    return player if @board[0][0] == player.alias && @board[1][1] == player.alias && @board[2][2] == player.alias
+
+    return player if @board[0][2] == player.alias && @board[1][1] == player.alias && @board[2][0] == player.alias
+
+    return player if @board[0][0] == player.alias && @board[1][0] == player.alias && @board[2][0] == player.alias
+
+    return player if @board[0][1] == player.alias && @board[1][1] == player.alias && @board[2][1] == player.alias
+
+    return player if @board[0][2] == player.alias && @board[1][2] == player.alias && @board[2][2] == player.alias
+  end
 end
