@@ -50,8 +50,8 @@ loop do
       else
         board[row][column] = player[1]
       end
-      
-      #Showing game board
+
+      # Showing game board
       puts "#{board[0]} \n#{board[1]}\n#{board[2]}"
 
       puts "Let's see if you are the winner"
@@ -61,7 +61,7 @@ loop do
       player = player == player_x ? player_o : player_x
 
       game_on = false if !board[0].all?(nil) && !board[1].all?(nil) && !board[2].all?(nil)
-      game_one = false if !winner.nil?
+      game_on = false unless winner.nil?
     end
 
     puts "Winner is #{player[1]}"
