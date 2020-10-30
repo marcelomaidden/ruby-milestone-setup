@@ -34,10 +34,10 @@ loop do
       puts '============================================'
       puts 'Enter row number: '
       row = gets.chomp
-      game.row = (row)
+      game.row = row
       puts 'Enter column number: '
       column = gets.chomp
-      game.column = (column)
+      game.column = column
 
       system('clear')
 
