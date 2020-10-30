@@ -28,7 +28,7 @@ class Game
     @board[@row][@column] = player
     true
   end
-  
+
   def board_nil?
     return false unless @board[@row][@column].nil?
 
