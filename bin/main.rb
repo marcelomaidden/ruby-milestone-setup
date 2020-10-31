@@ -5,6 +5,11 @@
 require_relative '../lib/game'
 require_relative '../lib/player'
 
+def message(text)
+  puts "\n============================================"
+  puts text
+  puts '============================================'
+end
 loop do
   puts '#################################'
   puts '  Tic Tac Toe Game'
@@ -23,9 +28,7 @@ loop do
     break if name.to_i == 0 && name != '0' && name.strip != ''
 
     system('clear')
-    puts "\n============================================"
-    puts "\nOnly strings are allowed"
-    puts "\============================================"
+    message('Only strings are allowed')
   end
 
   loop do
@@ -34,9 +37,7 @@ loop do
     player_o = Player.new(name)
     break if name.to_i == 0 && name != '0' && name.strip != ''
     system('clear')
-    puts "\n============================================"
-    puts "\nOnly strings are allowed"
-    puts "\============================================"
+    message('Only strings are allowed')
 
   end
 
@@ -49,40 +50,32 @@ loop do
     system('clear')
 
     loop do
-      puts "\n============================================"
-      puts "Player #{player.alias}[#{player.name}]"
-      puts '============================================'
+      message("Player #{player.alias}[#{player.name}]")
 
       row = 0
       column = 0
 
-      loop do
-        puts 'Enter row number: '
-        row = gets.chomp
-        game.row = row
-        puts 'Enter column number: '
-        column = gets.chomp
-        game.column = column
-      end
+
+
+      puts 'Enter row number: '
+      row = gets.chomp
+      game.row = row
+      puts 'Enter column number: '
+      column = gets.chomp
+      game.column = column
+
       system('clear')
 
-      puts "\n============================================"
-      puts "Let's verify if your game is valid"
-      puts '============================================'
+      message("Let's verify if your game is valid")
 
       if !game.valid?
-        puts "\n==========================================="
-        puts 'Rows and column should be between 1 and 3'
-        puts '==========================================='
+        message('Rows and column should be between 1 and 3')
       elsif !game.board_nil?
-        puts "\n==========================================="
-        puts 'These row and column already exists'
-        puts '==========================================='
+        message('These row and column already exists')
       else
         game.play(player.alias)
-        puts "\n==========================================="
-        puts "Let's see if you are the winner"
-        puts "\n==========================================="
+        
+        message("Let's see if you are the winner")        
 
         game.on = false if game.winner(player) == player || game.board_full?
 
@@ -92,28 +85,23 @@ loop do
         end
       end
 
-      puts "Game board full?: #{game.board_full?}"
-
       puts game.display_board
 
       break unless game.on
     end
 
-    puts "\n==========================================="
 
     if game.winner(player).is_a?(Player)
-      puts "Winner is #{player.alias}[#{player.name}]"
+      message("Winner is #{player.alias}[#{player.name}]")
     else
-      puts 'There is no winner'
+      message('There is no winner')
     end
-
-    puts "\n==========================================="
   end
 
   wanna_play = ''
 
   loop do
-    puts 'Do you wanna play again? [yes] [no]'
+    message('Do you wanna play again? [yes] [no]')
     wanna_play = gets.chomp
     break if wanna_play.upcase == 'YES' || wanna_play.upcase == 'NO'
   end
