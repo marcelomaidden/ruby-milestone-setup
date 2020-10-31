@@ -11,7 +11,7 @@ class Game
   end
 
   def display_board
-    return "#{@board[0]} \n#{@board[1]}\n#{@board[2]}"
+    "#{@board[0]} \n#{@board[1]}\n#{@board[2]}"
   end
 
   def row=(row)
