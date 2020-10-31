@@ -13,13 +13,33 @@ loop do
 
   game = Game.new
 
-  puts "Enter the player X's name"
-  name = gets.chomp
-  player_x = Player.new(name)
+  player_x = nil
+  player_o = nil
 
-  puts "Enter the player O's name"
-  name = gets.chomp
-  player_o = Player.new(name)
+  loop do
+    puts "Enter the player X's name"
+    name = gets.chomp
+    player_x = Player.new(name)
+    break if name.to_i == 0 && name != '0' && name.strip != ''
+
+    system('clear')
+    puts "\n============================================"
+    puts "\nOnly strings are allowed"
+    puts "\============================================"
+  end
+
+  loop do
+    puts "Enter the player O's name"
+    name = gets.chomp
+    player_o = Player.new(name)
+    break if name.to_i == 0 && name != '0' && name.strip != ''
+    system('clear')
+    puts "\n============================================"
+    puts "\nOnly strings are allowed"
+    puts "\============================================"
+
+  end
+
 
   player = player_x
 
@@ -32,13 +52,18 @@ loop do
       puts "\n============================================"
       puts "Player #{player.alias}[#{player.name}]"
       puts '============================================'
-      puts 'Enter row number: '
-      row = gets.chomp
-      game.row = row
-      puts 'Enter column number: '
-      column = gets.chomp
-      game.column = column
 
+      row = 0
+      column = 0
+
+      loop do
+        puts 'Enter row number: '
+        row = gets.chomp
+        game.row = row
+        puts 'Enter column number: '
+        column = gets.chomp
+        game.column = column
+      end
       system('clear')
 
       puts "\n============================================"
