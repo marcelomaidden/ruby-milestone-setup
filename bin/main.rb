@@ -25,7 +25,7 @@ loop do
     puts "Enter the player X's name"
     name = gets.chomp
     player_x = Player.new(name)
-    break if name.to_i == 0 && name != '0' && name.strip != ''
+    break if name.to_i.zero? && name != '0' && name.strip != ''
 
     system('clear')
     message('Only strings are allowed')
@@ -35,12 +35,11 @@ loop do
     puts "Enter the player O's name"
     name = gets.chomp
     player_o = Player.new(name)
-    break if name.to_i == 0 && name != '0' && name.strip != ''
+    break if name.to_i.zero? && name != '0' && name.strip != ''
+
     system('clear')
     message('Only strings are allowed')
-
   end
-
 
   player = player_x
 
@@ -50,17 +49,22 @@ loop do
     system('clear')
 
     loop do
+      system('clear')
+
+      message('Board full') if game.board_full?
+
       message("Player #{player.alias}[#{player.name}]")
 
-      row = 0
-      column = 0
+      puts game.display_board
 
+      message('Please enter the coordinates for your game')
+      message("For example, to fill the first box enter \nrow = 1 and column = 1")
+      message("to fill the second box on the second row \nenter row = 2 and column = 2")
 
-
-      puts 'Enter row number: '
+      message('Enter row number: ')
       row = gets.chomp
       game.row = row
-      puts 'Enter column number: '
+      message('Enter column number: ')
       column = gets.chomp
       game.column = column
 
@@ -74,8 +78,8 @@ loop do
         message('These row and column already exists')
       else
         game.play(player.alias)
-        
-        message("Let's see if you are the winner")        
+
+        message("Let's see if you are the winner")
 
         game.on = false if game.winner(player) == player || game.board_full?
 
@@ -89,7 +93,6 @@ loop do
 
       break unless game.on
     end
-
 
     if game.winner(player).is_a?(Player)
       message("Winner is #{player.alias}[#{player.name}]")

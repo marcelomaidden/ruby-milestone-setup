@@ -11,7 +11,11 @@ class Game
   end
 
   def display_board
-    "#{@board[0]} \n#{@board[1]}\n#{@board[2]}"
+    "              Column
+           1    2    3
+    \n     1 - #{@board[0]}
+    \n Row 2 - #{@board[1]}
+    \n     3 - #{@board[2]}"
   end
 
   def row=(row)
