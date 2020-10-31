@@ -69,7 +69,7 @@ loop do
 
       puts "Game board full?: #{game.board_full?}"
 
-      game.display_board
+      puts game.display_board
 
       break unless game.on
     end
