@@ -16,7 +16,7 @@ loop do
 
   game = Game.new
   player_x = nil
-  player_o = nil 
+  player_o = nil
   Player.reset_count
 
   loop do
@@ -49,7 +49,7 @@ loop do
     msg = 'Please enter the coordinates for your game'
     msg += "\nFor example, to fill the first box enter \nrow = 1 and column = 1"
     msg += "\nto fill the second box on the second row \nenter row = 2 and column = 2"
-    
+
     loop do
       message(msg)
 
@@ -100,7 +100,7 @@ loop do
     if game.winner(player).is_a?(Player)
       message("Winner is #{player.alias}[#{player.name}]")
     elsif game.board_full?
-      message("Game has no winner")
+      message('Game has no winner')
     else
       message('There is no winner')
     end

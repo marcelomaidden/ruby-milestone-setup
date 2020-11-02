@@ -17,7 +17,7 @@ class Player
              end
   end
 
-  def Player.reset_count
+  def self.reset_count
     @@count_player = 0
   end
 end
