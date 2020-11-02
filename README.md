@@ -12,21 +12,21 @@
 
 ## Getting started
 # In order to run the project locally follow all steps below:
-    - Install git following the instructions available at (https://git-scm.com/downloads)
+Install git following the instructions available at (https://git-scm.com/downloads)
 
-    - clone the repository 
+Clone the repository typing the command below on your preferred terminal
 
-        git clone https://github.com/marcelomaidden/ruby-milestone-setup
+    git clone https://github.com/marcelomaidden/ruby-milestone-setup
 
-    - After you have cloned the repository, enter the directory typing 
+After you have cloned the repository, enter the directory typing 
         
-        cd ruby-milestone-setup
+    cd ruby-milestone-setup
 
-    - Install ruby following the instructions available at (https://www.ruby-lang.org/en/downloads/)
+Install ruby following the instructions available at (https://www.ruby-lang.org/en/downloads/)
 
-    - Then run the command below
+Then run the command below
 
-        ruby bin/main.rb
+    ruby bin/main.rb
 
 ## Rules for TIC-TAC-TOE
 
