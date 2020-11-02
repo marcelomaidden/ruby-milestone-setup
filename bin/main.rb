@@ -1,12 +1,10 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/BlockLength
-# rubocop:disable Metrics/BlockNesting
 
 require_relative '../lib/game'
 require_relative '../lib/player'
 
 def message(text)
-  puts "\n============================================"
   puts text
   puts '============================================'
 end
@@ -48,45 +46,52 @@ loop do
   while game.on
     system('clear')
 
-    loop do
-      system('clear')
+    msg = 'Please enter the coordinates for your game'
+    msg += "\nFor example, to fill the first box enter \nrow = 1 and column = 1"
+    msg += "\nto fill the second box on the second row \nenter row = 2 and column = 2"
 
+    loop do
       message('Board full') if game.board_full?
 
-      message("Player #{player.alias}[#{player.name}]")
+      message(msg)
 
-      puts game.display_board
+      loop do
+        message("Player #{player.alias}[#{player.name}]")
 
-      message('Please enter the coordinates for your game')
-      message("For example, to fill the first box enter \nrow = 1 and column = 1")
-      message("to fill the second box on the second row \nenter row = 2 and column = 2")
+        puts game.display_board
 
-      message('Enter row number: ')
-      row = gets.chomp
-      game.row = row
-      message('Enter column number: ')
-      column = gets.chomp
-      game.column = column
+        message('Enter row number: ')
+        row = gets.chomp
+        game.row = row
+        message('Enter column number: ')
+        column = gets.chomp
+        game.column = column
+
+        if !game.valid?
+          system('clear')
+          message(msg)
+          message("Rows and columns should be between 1 and 3\nPlease try again")
+        elsif !game.board_nil?
+          system('clear')
+          message(msg)
+          message("These row and column already exists\nPlease try again")
+        else
+          game.play(player.alias)
+          break
+        end
+      end
 
       system('clear')
 
       message("Let's verify if your game is valid")
 
-      if !game.valid?
-        message('Rows and column should be between 1 and 3')
-      elsif !game.board_nil?
-        message('These row and column already exists')
-      else
-        game.play(player.alias)
+      message("Let's see if you are the winner")
 
-        message("Let's see if you are the winner")
+      game.on = false if game.winner(player) == player || game.board_full?
 
-        game.on = false if game.winner(player) == player || game.board_full?
-
-        # change player turn
-        if game.on
-          player = player == player_x ? player_o : player_x
-        end
+      # change player turn
+      if game.on
+        player = player == player_x ? player_o : player_x
       end
 
       puts game.display_board
@@ -115,4 +120,3 @@ loop do
 end
 
 # rubocop:enable Metrics/BlockLength
-# rubocop:enable Metrics/BlockNesting
