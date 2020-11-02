@@ -12,7 +12,7 @@
 
 ## Getting started
 # In order to run the project locally follow all steps below:
-Install git following the instructions available at (https://git-scm.com/downloads)
+Install git following the instructions available at [Git](https://git-scm.com/downloads)
 
 Clone the repository typing the command below on your preferred terminal
 
@@ -22,7 +22,7 @@ After you have cloned the repository, enter the directory typing
         
     cd ruby-milestone-setup
 
-Install ruby following the instructions available at (https://www.ruby-lang.org/en/downloads/)
+Install ruby following the instructions available at [Ruby](https://www.ruby-lang.org/en/downloads/)
 
 Then run the command below
 
