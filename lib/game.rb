@@ -44,8 +44,7 @@ class Game
   end
 
   def board_full?
-    true unless @board[0].any?(nil) || @board[1].any?(nil) || @board[2].any?(nil)
-    false
+    !(@board[0].any?(nil) || @board[1].any?(nil) || @board[2].any?(nil))
   end
 
   def winner(player)
