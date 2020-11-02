@@ -14,7 +14,7 @@
     In order to run the project locally clone the repository and run the command bellow
     - ruby bin/main.rb
 
-## RULES FOR TIC-TAC-TOE
+## Rules for TIC-TAC-TOE
 
 1. The game is played on a grid that's 3 squares by 3 squares.
 
