@@ -1,7 +1,7 @@
 # OOP (Object Oriented Programming)
 # Tic Tac Toe Game
 
-# A project made in Ruby to serve as a Tic Tac Toe Game.
+# A game in which two players take turns putting circles and crosses on a 3x3 grid and try to get three of the same symbols following the game rules. 
 In order to organize the code it was used different files, one for the game logic, another one for the player information, and the main file to get the user's input and provide an output when a player wins or it has a draw game. All movements for both players are displayed inside a (3X3) grid.
 
 ![screenshot](./screenshot.png)
